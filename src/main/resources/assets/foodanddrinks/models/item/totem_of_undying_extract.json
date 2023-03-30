@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "foodanddrinks:items/totem_of_undying_extract"
+  }
+}

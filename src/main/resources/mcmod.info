@@ -1,0 +1,14 @@
+[
+  {
+    "modid": "foodanddrinks",
+    "name": "Food&Drinks",
+    "description": "A modification that adds food and drinks!",
+    "mcversion": "1.12.2",
+    "authorList": [
+      "___exploit___ (code)",
+      "Kieza (art)",
+      "ivanbarin (idea)"
+    ],
+    "logoFile": "pack.png"
+  }
+]

@@ -1,0 +1,18 @@
+itemGroup.foodanddrinks=Food&Drinks
+
+tile.foodanddrinks.null.name= 
+
+item.foodanddrinks.apple_juice.name=Apple Juice Bottle
+item.foodanddrinks.carrot_salad.name=Carrot Salad
+item.foodanddrinks.chocolate_bar.name=Chocolate Bar
+item.foodanddrinks.cocoa.name=Cocoa
+item.foodanddrinks.fried_eggs.name=Fried Eggs
+item.foodanddrinks.fried_eggs_with_bacon.name=Fried Eggs With Bacon
+item.foodanddrinks.fruit_salad.name=Fruit Salad
+item.foodanddrinks.golden_carrot_salad.name=Golden Carrot Salad
+item.foodanddrinks.melon_juice.name=Melon Juice Bottle
+item.foodanddrinks.pear.name=Pear
+item.foodanddrinks.pear_juice.name=Pear Juice Bottle
+item.foodanddrinks.sunflower_oil.name=Sunflower Oil Bottle
+item.foodanddrinks.totem_of_undying_extract.name=Totem Of Undying Extract
+item.foodanddrinks.uncooked_fried_eggs.name=Uncooked Fried Eggs

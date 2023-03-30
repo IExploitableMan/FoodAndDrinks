@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "foodanddrinks:sunflower_oil"
+    }
+  ],
+  "result": {
+    "item": "foodanddrinks:carrot_salad"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:double_plant",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "foodanddrinks:sunflower_oil"
+  }
+}
