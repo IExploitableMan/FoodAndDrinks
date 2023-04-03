@@ -32,10 +32,6 @@ minecraft {
 //Dependencies
 repositories {
 }
-configurations {
-    fatJar
-    fatJar.extendsFrom(implementation)
-}
 dependencies {
         minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
 }
@@ -56,12 +52,6 @@ jar {
             "Implementation-Title"    : archivesBaseName,
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
-    }
-
-    from {
-        configurations.fatJar.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
     }
 }
 jar.finalizedBy('reobfJar')
