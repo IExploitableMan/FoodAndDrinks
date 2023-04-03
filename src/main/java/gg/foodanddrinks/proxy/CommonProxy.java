@@ -78,7 +78,7 @@ public class CommonProxy {
                 modreg.registerItem("pear", new ItemFood(3, 0.3F, false), true),
                 modreg.registerItem("pear_juice", new ItemContainedProduct(Type.DRINK, 6, 0.3F), true),
                 modreg.registerItem("sunflower_oil", new ItemContainedProduct(Type.DRINK).setBadFood(), true),
-                modreg.registerItem("totem_of_undying_extract", new ItemCustomPotion(Misc.getEffect(Misc.Effect.TOTEM_EXTRACT), 1), true),
+                modreg.registerItem("totem_of_undying_extract", new ItemCustomPotion(Misc.getEffect(Misc.Effect.TOTEM_EXTRACT)), true),
                 modreg.registerItem("uncooked_fried_eggs", new ItemContainedProduct(Type.FOOD).setBadFood(), true)
         );
     }
