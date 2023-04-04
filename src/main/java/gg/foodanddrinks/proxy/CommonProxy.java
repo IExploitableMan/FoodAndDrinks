@@ -8,6 +8,7 @@ import lib.___exploit___.item.ItemContainedProduct;
 import lib.___exploit___.item.ItemContainedProduct.Type;
 import lib.___exploit___.item.ItemCustomPotion;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockNewLeaf;
 import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
@@ -35,6 +36,8 @@ public class CommonProxy {
     public static ModRegistry modreg;
 
     public static class ObjectHolders {
+        @GameRegistry.ObjectHolder("foodanddrinks:cherry")
+        public static ItemFood cherry;
         @GameRegistry.ObjectHolder("foodanddrinks:fried_eggs")
         public static ItemContainedProduct friedEggs;
         @GameRegistry.ObjectHolder("foodanddrinks:pear")
@@ -68,6 +71,8 @@ public class CommonProxy {
                 //Default
                 modreg.registerItem("apple_juice", new ItemContainedProduct(Type.DRINK, 7, 0.3F), true),
                 modreg.registerItem("carrot_salad", new ItemContainedProduct(Type.FOOD, 11, 0.6F), true),
+                modreg.registerItem("cherry", new ItemFood(2, 0.3F, false), true),
+                modreg.registerItem("cherry_juice", new ItemContainedProduct(Type.DRINK, 5, 0.3F), true),
                 modreg.registerItem("chocolate_bar", new ItemContainedProduct(Type.FOOD, 9, 0.6F).setContainer(Items.PAPER), true),
                 modreg.registerItem("cocoa", new ItemCocoa(), true),
                 modreg.registerItem("fried_eggs", new ItemContainedProduct(Type.FOOD, 5, 0.4F).setNoCraftContainer(), true),
@@ -87,9 +92,19 @@ public class CommonProxy {
     @SubscribeEvent
     public static void harvestDropsEvent(BlockEvent.HarvestDropsEvent event) {
         IBlockState state = event.getState();
+        Block block = state.getBlock();
 
-        if (state.getBlock() == Blocks.LEAVES) {
-            if (state.getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.OAK && event.getWorld().rand.nextInt(200) == 1) {
+        boolean leafRandom = event.getWorld().rand.nextInt(200) == 0;
+
+        if (block == Blocks.LEAVES && leafRandom) {
+            BlockPlanks.EnumType type = state.getValue(BlockOldLeaf.VARIANT);
+            if (type == BlockPlanks.EnumType.BIRCH) {
+                spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.cherry));
+            }
+        }
+        if (block == Blocks.LEAVES2 && leafRandom) {
+            BlockPlanks.EnumType type = state.getValue(BlockNewLeaf.VARIANT);
+            if (type == BlockPlanks.EnumType.DARK_OAK) {
                 spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.pear));
             }
         }
