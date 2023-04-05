@@ -4,6 +4,7 @@ import gg.foodanddrinks.FoodAndDrinks;
 import gg.foodanddrinks.Misc;
 import gg.foodanddrinks.custom.item.ItemCocoa;
 import lib.___exploit___.ModRegistry;
+import lib.___exploit___.event.LeavesSpecialDropEvent;
 import lib.___exploit___.item.ItemContainedProduct;
 import lib.___exploit___.item.ItemContainedProduct.Type;
 import lib.___exploit___.item.ItemCustomPotion;
@@ -91,23 +92,13 @@ public class CommonProxy {
 
     //Events
     @SubscribeEvent
-    public static void harvestDropsEvent(BlockEvent.HarvestDropsEvent event) {
-        IBlockState state = event.getState();
-        Block block = state.getBlock();
-
-        boolean leafRandom = event.getWorld().rand.nextInt(200) == 0;
-
-        if (block == Blocks.LEAVES && leafRandom) {
-            BlockPlanks.EnumType type = state.getValue(BlockOldLeaf.VARIANT);
-            if (type == BlockPlanks.EnumType.BIRCH) {
-                spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.cherry));
-            }
+    public static void leavesSpecialDrop(LeavesSpecialDropEvent event) {
+        BlockPlanks.EnumType type = event.getType();
+        if(type == BlockPlanks.EnumType.BIRCH) {
+            spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.cherry));
         }
-        if (block == Blocks.LEAVES2 && leafRandom) {
-            BlockPlanks.EnumType type = state.getValue(BlockNewLeaf.VARIANT);
-            if (type == BlockPlanks.EnumType.DARK_OAK) {
-                spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.pear));
-            }
+        if(event.getType() == BlockPlanks.EnumType.DARK_OAK) {
+            spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.pear));
         }
     }
 
