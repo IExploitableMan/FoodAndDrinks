@@ -4,7 +4,6 @@ import lib.___exploit___.item.ItemContainedProduct;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class ItemCocoa extends ItemContainedProduct {

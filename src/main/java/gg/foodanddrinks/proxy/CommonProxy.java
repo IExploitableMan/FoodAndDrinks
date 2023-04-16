@@ -8,19 +8,13 @@ import lib.___exploit___.event.LeavesSpecialDropEvent;
 import lib.___exploit___.item.ItemContainedProduct;
 import lib.___exploit___.item.ItemContainedProduct.Type;
 import lib.___exploit___.item.ItemCustomPotion;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockNewLeaf;
-import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -36,34 +30,10 @@ public class CommonProxy {
     //Fields
     public static ModRegistry modreg;
 
-    public static class ObjectHolders {
-        @GameRegistry.ObjectHolder("foodanddrinks:cherry")
-        public static ItemFood cherry;
-        @GameRegistry.ObjectHolder("foodanddrinks:fried_eggs")
-        public static ItemContainedProduct friedEggs;
-        @GameRegistry.ObjectHolder("foodanddrinks:pear")
-        public static ItemFood pear;
-        @GameRegistry.ObjectHolder("foodanddrinks:uncooked_fried_eggs")
-        public static ItemContainedProduct uncookedFriedEggs;
-    }
-
     //Registry
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        IForgeRegistry<Block> eventRegistry = event.getRegistry();
-
-        eventRegistry.registerAll(
-                //Default
-        );
-    }
-
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> eventRegistry = event.getRegistry();
-
-        for (Item i : modreg.getAutoItemBlock()) {
-            eventRegistry.register(i);
-        }
 
         eventRegistry.registerAll(
                 //Patch
@@ -94,10 +64,10 @@ public class CommonProxy {
     @SubscribeEvent
     public static void leavesSpecialDrop(LeavesSpecialDropEvent event) {
         BlockPlanks.EnumType type = event.getType();
-        if(type == BlockPlanks.EnumType.BIRCH) {
+        if (type == BlockPlanks.EnumType.BIRCH) {
             spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.cherry));
         }
-        if(event.getType() == BlockPlanks.EnumType.DARK_OAK) {
+        if (event.getType() == BlockPlanks.EnumType.DARK_OAK) {
             spawnAsEntity(event.getWorld(), event.getPos(), new ItemStack(ObjectHolders.pear));
         }
     }
@@ -118,5 +88,16 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
+    }
+
+    public static class ObjectHolders {
+        @GameRegistry.ObjectHolder("foodanddrinks:cherry")
+        public static ItemFood cherry;
+        @GameRegistry.ObjectHolder("foodanddrinks:fried_eggs")
+        public static ItemContainedProduct friedEggs;
+        @GameRegistry.ObjectHolder("foodanddrinks:pear")
+        public static ItemFood pear;
+        @GameRegistry.ObjectHolder("foodanddrinks:uncooked_fried_eggs")
+        public static ItemContainedProduct uncookedFriedEggs;
     }
 }

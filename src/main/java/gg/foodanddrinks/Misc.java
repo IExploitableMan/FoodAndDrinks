@@ -4,10 +4,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 
 public class Misc {
-    public enum Effect {
-        TOTEM_EXTRACT
-    }
-
     public static PotionEffect getEffect(Effect id) {
 
         if (id == Effect.TOTEM_EXTRACT) {
@@ -17,5 +13,9 @@ public class Misc {
     }
 
     private static void sandbox() {
+    }
+
+    public enum Effect {
+        TOTEM_EXTRACT
     }
 }
